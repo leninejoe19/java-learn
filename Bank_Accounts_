@@ -1,0 +1,62 @@
+// BankAccountDemo.java
+
+class BankAccount {
+    // Private fields (Encapsulation)
+    private String accountNumber;
+    private String holderName;
+    private double balance;
+
+    // Constructor
+    public BankAccount(String accountNumber, String holderName, double balance) {
+        this.accountNumber = accountNumber;
+        this.holderName = holderName;
+        this.balance = balance;
+    }
+
+    // Deposit method
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: $" + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // Withdraw method
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: $" + amount);
+        } else {
+            System.out.println("Invalid or insufficient balance for withdrawal.");
+        }
+    }
+
+    // Display balance method
+    public void displayBalance() {
+        System.out.println("Account Holder: " + holderName);
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Current Balance: $" + balance);
+        System.out.println("-----------------------------");
+    }
+}
+
+public class BankAccountDemo {
+    public static void main(String[] args) {
+        // Creating bank account object
+        BankAccount account = new BankAccount("1234567890", "John Doe", 1000.0);
+
+        // Display initial balance
+        account.displayBalance();
+
+        // Deposit money
+        account.deposit(500.0);
+
+        // Withdraw money
+        account.withdraw(300.0);
+
+        // Display final balance
+        account.displayBalance();
+    }
+}
